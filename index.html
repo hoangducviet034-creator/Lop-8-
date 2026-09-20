@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#667eea">
+<title>Lớp 8/3 - Trang lớp</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:
+    radial-gradient(circle at 10% 10%,rgba(255,255,255,.25),transparent 25%),
+    linear-gradient(135deg,#667eea,#764ba2,#f093fb);
+  background-attachment:fixed;
+  color:#202030;
+  min-height:100vh;
+}
+
+button,input,textarea{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.container{
+  width:min(1100px,92%);
+  margin:auto;
+}
+
+/* ===== HEADER ===== */
+
+header{
+  padding:55px 0 35px;
+  text-align:center;
+  color:white;
+}
+
+.logo{
+  width:85px;
+  height:85px;
+  margin:0 auto 18px;
+  border-radius:28px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:42px;
+  background:rgba(255,255,255,.2);
+  border:1px solid rgba(255,255,255,.4);
+  box-shadow:0 15px 40px rgba(0,0,0,.2);
+}
+
+header h1{
+  font-size:clamp(32px,8vw,60px);
+  margin-bottom:10px;
+  text-shadow:0 4px 15px rgba(0,0,0,.2);
+}
+
+header p{
+  font-size:17px;
+  opacity:.9;
+}
+
+/* ===== NAV ===== */
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(20,20,35,.75);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid rgba(255,255,255,.15);
+}
+
+.nav-inner{
+  width:min(1100px,94%);
+  margin:auto;
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding:10px 0;
+}
+
+.nav-inner a{
+  color:white;
+  text-decoration:none;
+  padding:10px 15px;
+  border-radius:12px;
+  white-space:nowrap;
+  transition:.2s;
+}
+
+.nav-inner a:hover{
+  background:rgba(255,255,255,.15);
+}
+
+/* ===== SECTIONS ===== */
+
+section{
+  padding:55px 0;
+}
+
+.section-title{
+  text-align:center;
+  color:white;
+  margin-bottom:30px;
+}
+
+.section-title h2{
+  font-size:30px;
+  margin-bottom:8px;
+}
+
+.section-title p{
+  opacity:.85;
+}
+
+/* ===== STATS ===== */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+  margin-bottom:30px;
+}
+
+.stat{
+  background:rgba(255,255,255,.88);
+  border-radius:22px;
+  padding:22px;
+  text-align:center;
+  box-shadow:0 12px 35px rgba(0,0,0,.15);
+}
+
+.stat-number{
+  display:block;
+  font-size:34px;
+  font-weight:bold;
+  color:#667eea;
+}
+
+.stat-label{
+  color:#666;
+  margin-top:5px;
+}
+
+/* ===== CARDS ===== */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.card{
+  background:rgba(255,255,255,.94);
+  border-radius:22px;
+  padding:22px;
+  box-shadow:0 15px 40px rgba(0,0,0,.16);
+  transition:.25s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+.member-avatar{
+  width:65px;
+  height:65px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#667eea,#f093fb);
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:25px;
+  font-weight:bold;
+  margin-bottom:15px;
+}
+
+.member-name{
+  font-size:19px;
+  font-weight:bold;
+  margin-bottom:7px;
+}
+
+.role{
+  display:inline-block;
+  background:#eeeaff;
+  color:#6655d9;
+  padding:7px 11px;
+  border-radius:20px;
+  font-size:13px;
+}
+
+.card-actions{
+  display:flex;
+  gap:8px;
+  margin-top:18px;
+}
+
+.card-actions button{
+  flex:1;
+}
+
+/* ===== EVENTS ===== */
+
+.event{
+  position:relative;
+  overflow:hidden;
+}
+
+.event-month{
+  display:inline-block;
+  background:linear-gradient(135deg,#667eea,#764ba2);
+  color:white;
+  padding:7px 12px;
+  border-radius:12px;
+  font-size:13px;
+  margin-bottom:14px;
+}
+
+.event h3{
+  margin-bottom:8px;
+}
+
+.event p{
+  color:#666;
+  line-height:1.6;
+}
+
+/* ===== TOOLBAR ===== */
+
+.toolbar{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:20px;
+}
+
+.search{
+  flex:1;
+  min-width:200px;
+  border:0;
+  outline:0;
+  padding:14px 17px;
+  border-radius:15px;
+  background:white;
+  box-shadow:0 8px 25px rgba(0,0,0,.12);
+}
+
+.btn{
+  border:0;
+  padding:12px 17px;
+  border-radius:13px;
+  background:#667eea;
+  color:white;
+  font-weight:bold;
+  transition:.2s;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.08);
+}
+
+.btn.danger{
+  background:#ef5350;
+}
+
+.btn.secondary{
+  background:#555;
+}
+
+/* ===== PHOTOS ===== */
+
+.photo-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.photo{
+  aspect-ratio:1;
+  border-radius:18px;
+  overflow:hidden;
+  background:rgba(255,255,255,.3);
+  position:relative;
+}
+
+.photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.photo button{
+  position:absolute;
+  right:7px;
+  top:7px;
+  width:34px;
+  height:34px;
+  border:0;
+  border-radius:50%;
+  background:rgba(0,0,0,.65);
+  color:white;
+}
+
+/* ===== MODAL ===== */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:100;
+  background:rgba(0,0,0,.65);
+  padding:20px;
+  align-items:center;
+  justify-content:center;
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  width:min(500px,100%);
+  max-height:90vh;
+  overflow:auto;
+  background:white;
+  border-radius:25px;
+  padding:25px;
+  box-shadow:0 25px 70px rgba(0,0,0,.35);
+}
+
+.modal-box h2{
+  margin-bottom:20px;
+}
+
+.form-group{
+  margin-bottom:15px;
+}
+
+.form-group label{
+  display:block;
+  font-weight:bold;
+  margin-bottom:7px;
+}
+
+.form-group input,
+.form-group textarea{
+  width:100%;
+  padding:13px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  outline:none;
+}
+
+.form-group textarea{
+  min-height:100px;
+  resize:vertical;
+}
+
+.form-actions{
+  display:flex;
+  gap:10px;
+  margin-top:20px;
+}
+
+.form-actions button{
+  flex:1;
+}
+
+/* ===== PONADIRA ===== */
+
+#aiFab{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  z-index:80;
+  width:65px;
+  height:65px;
+  border:0;
+  border-radius:50%;
+  background:linear-gradient(135deg,#ffd54f,#ff9800);
+  font-size:32px;
+  box-shadow:0 10px 30px rgba(0,0,0,.3);
+  animation:float 2.5s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-7px)}
+}
+
+#aiPanel{
+  display:none;
+  position:fixed;
+  right:18px;
+  bottom:95px;
+  z-index:90;
+  width:min(370px,calc(100% - 36px));
+  height:500px;
+  background:white;
+  border-radius:25px;
+  overflow:hidden;
+  box-shadow:0 20px 70px rgba(0,0,0,.35);
+}
+
+#aiPanel.show{
+  display:flex;
+  flex-direction:column;
+}
+
+.ai-header{
+  background:linear-gradient(135deg,#ffd54f,#ff9800);
+  padding:16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.ai-title{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.ai-icon{
+  font-size:30px;
+}
+
+.ai-header button{
+  border:0;
+  background:rgba(0,0,0,.15);
+  width:35px;
+  height:35px;
+  border-radius:50%;
+}
+
+#aiMessages{
+  flex:1;
+  overflow:auto;
+  padding:15px;
+  background:#f6f7fb;
+}
+
+.msg{
+  max-width:85%;
+  padding:11px 14px;
+  border-radius:16px;
+  margin-bottom:10px;
+  line-height:1.5;
+  word-wrap:break-word;
+}
+
+.msg.bot{
+  background:white;
+  border:1px solid #eee;
+}
+
+.msg.user{
+  margin-left:auto;
+  background:#667eea;
+  color:white;
+}
+
+.ai-suggestions{
+  display:flex;
+  gap:6px;
+  overflow-x:auto;
+  padding:8px;
+  background:white;
+}
+
+.ai-suggestions button{
+  border:1px solid #ddd;
+  background:#f5f5f5;
+  border-radius:15px;
+  padding:7px 10px;
+  white-space:nowrap;
+  font-size:12px;
+}
+
+#aiForm{
+  display:flex;
+  gap:7px;
+  padding:10px;
+  background:white;
+  border-top:1px solid #eee;
+}
+
+#aiInput{
+  flex:1;
+  min-width:0;
+  border:1px solid #ddd;
+  border-radius:15px;
+  padding:11px;
+  outline:none;
+}
+
+#aiForm button{
+  width:48px;
+  border:0;
+  border-radius:15px;
+  background:#667eea;
+  color:white;
+}
+
+/* ===== FOOTER ===== */
+
+footer{
+  text-align:center;
+  color:white;
+  padding:35px 15px 100px;
+}
+
+.note{
+  margin-top:10px;
+  opacity:.75;
+  font-size:13px;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media(max-width:800px){
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .photo-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+@media(max-width:550px){
+  header{
+    padding:40px 0 25px;
+  }
+
+  section{
+    padding:40px 0;
+  }
+
+  .stats{
+    gap:9px;
+  }
+
+  .stat{
+    padding:15px 8px;
+    border-radius:16px;
+  }
+
+  .stat-number{
+    font-size:27px;
+  }
+
+  .stat-label{
+    font-size:12px;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .photo-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .card{
+    padding:18px;
+  }
+
+  #aiPanel{
+    height:65vh;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <div class="logo">8/3</div>
+    <h1>Lớp 8/3</h1>
+    <p>Đoàn kết • Học tập • Vui chơi • Cùng nhau trưởng thành</p>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#home">🏠 Trang chủ</a>
+    <a href="#members">👥 Thành viên</a>
+    <a href="#events">📅 Sự kiện</a>
+    <a href="#photos">📸 Ảnh lớp</a>
+  </div>
+</nav>
+
+<main>
+
+<section id="home">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>✨ Chào mừng đến với 8/3</h2>
+      <p>Ngôi nhà chung của lớp chúng mình</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-number" id="memberCount">0</span>
+        <span class="stat-label">Thành viên</span>
+      </div>
+
+      <div class="stat">
+        <span class="stat-number" id="eventCount">0</span>
+        <span class="stat-label">Sự kiện</span>
+      </div>
+
+      <div class="stat">
+        <span class="stat-number" id="photoCount">0</span>
+        <span class="stat-label">Ảnh</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🌟 Xin chào!</h2>
+      <br>
+      <p style="line-height:1.8;color:#666">
+        Đây là trang web của lớp <b>8/3</b>.
+        Tại đây chúng ta có thể xem thành viên, các sự kiện
+        và lưu lại những khoảnh khắc đáng nhớ của cả lớp.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section id="members">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>👥 Thành viên lớp</h2>
+      <p>Danh sách và chức vụ của các thành viên</p>
+    </div>
+
+    <div class="toolbar">
+      <input
+        class="search"
+        id="memberSearch"
+        placeholder="🔎 Tìm tên hoặc chức vụ..."
+      >
+      <button class="btn" id="addMemberBtn">＋ Thêm thành viên</button>
+    </div>
+
+    <div class="grid" id="memberList"></div>
+
+  </div>
+</section>
+
+<section id="events">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>📅 Sự kiện</h2>
+      <p>Những hoạt động đáng nhớ của lớp</p>
+    </div>
+
+    <div class="toolbar">
+      <input
+        class="search"
+        id="eventSearch"
+        placeholder="🔎 Tìm sự kiện..."
+      >
+      <button class="btn" id="addEventBtn">＋ Thêm sự kiện</button>
+    </div>
+
+    <div class="grid" id="eventList"></div>
+
+  </div>
+</section>
+
+<section id="photos">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>📸 Thư viện ảnh</h2>
+      <p>Ảnh được lưu trực tiếp trên thiết bị này</p>
+    </div>
+
+    <div class="toolbar">
+      <label class="btn">
+        📷 Thêm ảnh
+        <input
+          id="photoInput"
+          type="file"
+          accept="image/*"
+          multiple
+          hidden
+        >
+      </label>
+
+      <button class="btn danger" id="clearPhotosBtn">
+        🗑 Xóa tất cả
+      </button>
+    </div>
+
+    <div class="photo-grid" id="photoGrid"></div>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div>© <span id="year"></span> Lớp 8/3</div>
+  <div class="note">
+    Ponadira đang dùng dữ liệu lớp được lưu trên thiết bị này.
+  </div>
+</footer>
+
+
+<!-- ===== MODAL THÀNH VIÊN ===== -->
+
+<div class="modal" id="memberModal">
+  <div class="modal-box">
+
+    <h2 id="memberModalTitle">➕ Thêm thành viên</h2>
+
+    <form id="memberForm">
+
+      <div class="form-group">
+        <label>Họ tên</label>
+        <input
+          id="memberName"
+          required
+          placeholder="Ví dụ: Nguyễn Văn A"
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Chức vụ</label>
+        <input
+          id="memberRole"
+          required
+          placeholder="Ví dụ: Lớp trưởng / Tổ trưởng"
+        >
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn secondary" id="memberCancel">
+          Hủy
+        </button>
+
+        <button type="submit" class="btn">
+          Lưu
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+
+<!-- ===== MODAL SỰ KIỆN ===== -->
+
+<div class="modal" id="eventModal">
+  <div class="modal-box">
+
+    <h2 id="eventModalTitle">➕ Thêm sự kiện</h2>
+
+    <form id="eventForm">
+
+      <div class="form-group">
+        <label>Tháng</label>
+        <input
+          id="eventMonth"
+          required
+          placeholder="Ví dụ: 09"
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Năm</label>
+        <input
+          id="eventYear"
+          required
+          placeholder="Ví dụ: 2026"
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Tên sự kiện</label>
+        <input
+          id="eventName"
+          required
+          placeholder="Ví dụ: Sinh hoạt lớp"
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Mô tả</label>
+        <textarea
+          id="eventDesc"
+          placeholder="Mô tả hoạt động..."
+        ></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn secondary" id="eventCancel">
+          Hủy
+        </button>
+
+        <button type="submit" class="btn">
+          Lưu
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+
+<!-- ===== PONADIRA ===== -->
+
+<button id="aiFab" aria-label="Mở Ponadira">🐝</button>
+
+<div id="aiPanel">
+
+  <div class="ai-header">
+
+    <div class="ai-title">
+      <div class="ai-icon">🐝</div>
+
+      <div>
+        <b>Ponadira AI</b>
+        <div style="font-size:12px">
+          Trợ lý lớp 8/3
+        </div>
+      </div>
+    </div>
+
+    <button id="aiClose">×</button>
+
+  </div>
+
+  <div id="aiMessages"></div>
+
+  <div class="ai-suggestions">
+    <button data-question="Lớp mình có ai?">
+      👥 Thành viên
+    </button>
+
+    <button data-question="Cơ cấu lớp như thế nào?">
+      🏫 Chức vụ
+    </button>
+
+    <button data-question="Tháng 10 có gì?">
+      📅 Tháng 10
+    </button>
+
+    <button data-question="Giới thiệu lớp">
+      ✨ Giới thiệu
+    </button>
+  </div>
+
+  <form id="aiForm">
+
+    <input
+      id="aiInput"
+      autocomplete="off"
+      placeholder="Hỏi Ponadira..."
+    >
+
+    <button type="submit">➤</button>
+
+  </form>
+
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  /* =========================
+     CƠ BẢN
+  ========================= */
+
+  const $ = function(id){
+    return document.getElementById(id);
+  };
+
+  $("year").textContent = new Date().getFullYear();
+
+
+  function escapeHtml(value){
+    return String(value == null ? "" : value).replace(/[&<>"']/g,function(m){
+      return {
+        "&":"&amp;",
+        "<":"&lt;",
+        ">":"&gt;",
+        '"':"&quot;",
+        "'":"&#039;"
+      }[m];
+    });
+  }
+
+
+  /* =========================
+     LOCAL STORAGE
+  ========================= */
+
+  function loadData(key,fallback){
+
+    try{
+      const raw = localStorage.getItem(key);
+
+      if(!raw){
+        localStorage.setItem(key,JSON.stringify(fallback));
+        return fallback;
+      }
+
+      const data = JSON.parse(raw);
+
+      return Array.isArray(data) ? data : fallback;
+
+    }catch(error){
+
+      console.error(error);
+      return fallback;
+
+    }
+  }
+
+
+  function saveData(key,data){
+
+    try{
+      localStorage.setItem(key,JSON.stringify(data));
+    }catch(error){
+
+      alert("Không thể lưu dữ liệu trên thiết bị.");
+      console.error(error);
+
+    }
+
+  }
+
+
+  /* =========================
+     DỮ LIỆU THÀNH VIÊN
+  ========================= */
+
+  const defaultMembers = [
+
+    {
+      name:"Nguyễn Văn A",
+      role:"Lớp trưởng"
+    },
+
+    {
+      name:"Trần Thị B",
+      role:"Lớp phó học tập"
+    },
+
+    {
+      name:"Lê Văn C",
+      role:"Lớp phó phong trào"
+    },
+
+    {
+      name:"Phạm Thị D",
+      role:"Tổ trưởng"
+    },
+
+    {
+      name:"Hoàng Văn E",
+      role:"Tổ trưởng"
+    },
+
+    {
+      name:"Thành viên 8/3",
+      role:"Luôn có mặt!"
+    }
+
+  ];
+
+
+  let members = loadData(
+    "lop83_members",
+    defaultMembers
+  );
+
+  let editingMember = -1;
+
+
+  function renderMembers(){
+
+    const list = $("memberList");
+    const keyword = $("memberSearch").value
+      .toLowerCase()
+      .trim();
+
+    list.innerHTML = "";
+
+    members.forEach(function(member,index){
+
+      const name = String(member.name || "");
+      const role = String(member.role || "");
+
+      if(
+        keyword &&
+        !name.toLowerCase().includes(keyword) &&
+        !role.toLowerCase().includes(keyword)
+      ){
+        return;
+      }
+
+      const first = name.trim()
+        ? name.trim().charAt(0).toUpperCase()
+        : "?";
+
+      const card = document.createElement("div");
+
+      card.className = "card";
+
+      card.innerHTML = `
+        <div class="member-avatar">${escapeHtml(first)}</div>
+
+        <div class="member-name">
+          ${escapeHtml(name)}
+        </div>
+
+        <div class="role">
+          ${escapeHtml(role)}
+        </div>
+
+        <div class="card-actions">
+
+          <button
+            class="btn"
+            data-edit-member="${index}"
+          >
+            ✏️ Sửa
+          </button>
+
+          <button
+            class="btn danger"
+            data-delete-member="${index}"
+          >
+            🗑 Xóa
+          </button>
+
+        </div>
+      `;
+
+      list.appendChild(card);
+
+    });
+
+    $("memberCount").textContent = members.length;
+
+  }
+
+
+  $("memberSearch").addEventListener(
+    "input",
+    renderMembers
+  );
+
+
+  $("addMemberBtn").addEventListener(
+    "click",
+    function(){
+
+      editingMember = -1;
+
+      $("memberModalTitle").textContent =
+        "➕ Thêm thành viên";
+
+      $("memberName").value = "";
+      $("memberRole").value = "";
+
+      $("memberModal").classList.add("show");
+
+    }
+  );
+
+
+  $("memberCancel").addEventListener(
+    "click",
+    function(){
+
+      $("memberModal").classList.remove("show");
+
+    }
+  );
+
+
+  $("memberForm").addEventListener(
+    "submit",
+    function(e){
+
+      e.preventDefault();
+
+      const name = $("memberName").value.trim();
+      const role = $("memberRole").value.trim();
+
+      if(!name || !role){
+        return;
+      }
+
+      if(editingMember === -1){
+
+        members.push({
+          name:name,
+          role:role
+        });
+
+      }else{
+
+        members[editingMember] = {
+          name:name,
+          role:role
+        };
+
+      }
+
+      saveData("lop83_members",members);
+
+      $("memberModal").classList.remove("show");
+
+      renderMembers();
+
+      addBotMessage("Đã cập nhật danh sách thành viên.");
+
+    }
+  );
+
+
+  $("memberList").addEventListener(
+    "click",
+    function(e){
+
+      const edit = e.target.closest(
+        "[data-edit-member]"
+      );
+
+      const del = e.target.closest(
+        "[data-delete-member]"
+      );
+
+      if(edit){
+
+        editingMember =
+          Number(edit.dataset.editMember);
+
+        const member = members[editingMember];
+
+        $("memberModalTitle").textContent =
+          "✏️ Sửa thành viên";
+
+        $("memberName").value =
+          member.name || "";
+
+        $("memberRole").value =
+          member.role || "";
+
+        $("memberModal").classList.add("show");
+
+      }
+
+
+      if(del){
+
+        const index =
+          Number(del.dataset.deleteMember);
+
+        if(confirm("Xóa thành viên này?")){
+
+          members.splice(index,1);
+
+          saveData("lop83_members",members);
+
+          renderMembers();
+
+        }
+
+      }
+
+    }
+  );
+
+
+  /* =========================
+     SỰ KIỆN
+  ========================= */
+
+  const defaultEvents = [
+
+    {
+      month:"09",
+      year:"2026",
+      name:"Ngày hội bắt đầu năm học",
+      desc:"Cả lớp gặp lại nhau, đặt mục tiêu mới và khởi động một năm học thật đáng nhớ."
+    },
+
+    {
+      month:"10",
+      year:"2026",
+      name:"Hoạt động tập thể",
+      desc:"Cùng tham gia các trò chơi, hoạt động tập thể và cổ vũ hết mình."
+    },
+
+    {
+      month:"11",
+      year:"2026",
+      name:"Văn nghệ & phong trào",
+      desc:"Cùng lên ý tưởng, luyện
